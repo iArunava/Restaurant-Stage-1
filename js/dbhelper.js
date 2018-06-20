@@ -8,8 +8,8 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
-    return `http://localhost:${port}/data/restaurants.json`;
+    const port = 3000 // Change this to your server port
+    return `http://127.0.0.1:${port}/data/restaurants.json`;
   }
 
   /**
@@ -28,6 +28,7 @@ class DBHelper {
         callback(error, null);
       }
     };
+    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.send();
   }
 
@@ -112,6 +113,7 @@ class DBHelper {
       if (error) {
         callback(error, null);
       } else {
+        console.log(restaurants);
         // Get all neighborhoods from all restaurants
         const neighborhoods = restaurants.map((v, i) => restaurants[i].neighborhood)
         // Remove duplicates from neighborhoods
@@ -157,7 +159,7 @@ class DBHelper {
    * Map marker for a restaurant.
    */
    static mapMarkerForRestaurant(restaurant, map) {
-    // https://leafletjs.com/reference-1.3.0.html#marker  
+    // https://leafletjs.com/reference-1.3.0.html#marker
     const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
       {title: restaurant.name,
       alt: restaurant.name,
@@ -165,17 +167,6 @@ class DBHelper {
       })
       marker.addTo(newMap);
     return marker;
-  } 
-  /* static mapMarkerForRestaurant(restaurant, map) {
-    const marker = new google.maps.Marker({
-      position: restaurant.latlng,
-      title: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant),
-      map: map,
-      animation: google.maps.Animation.DROP}
-    );
-    return marker;
-  } */
+  }
 
 }
-
