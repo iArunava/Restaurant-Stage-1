@@ -4,6 +4,7 @@
 * {
 	font-family: Quicksand, monospace;
 	font-size: 20px;
+	box-sizing: border-box;
 	transition: 0.3s ease;
 }
 
@@ -21,6 +22,7 @@ a {
 ul, li {
 	font-size: 10pt;
 	color: #333;
+	margin: 0px;
 }
 
 a img{
@@ -103,55 +105,65 @@ nav h1 a {
 
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
-  width: 100%;
-  background-color: #FB8C00;
-  align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	background-color: #FB8C00;
+	align-items: center;
 }
 
 .filter-options h2 {
-  color: white;
-  font-size: 1.25rem;
-  font-weight: bold;
-  line-height: 1.5;
-  margin: 0 20px;
+	color: white;
+	font-size: 1.25rem;
+	font-weight: bold;
+	line-height: 1.5;
+	margin: 0 20px;
 }
 
 .filter-options select {
-  border: none;
-  font-weight: bold;
-  font-size: 0.85rem;
-  height: 35px;
-  margin: 10px 10px 10px 20px;
-  padding: 0 10px;
-  width: 200px;
+	border: none;
+	font-weight: bold;
+	font-size: 0.85rem;
+	height: 35px;
+	margin: 10px 10px 10px 20px;
+	padding: 0 10px;
+	width: 200px;
 }
 
 /* ====================== Restaurant Listing ====================== */
 #id--restaurants-list {
-  background-color: #f3f3f3;
-  list-style: outside none none;
-  margin: 0;
-  padding: 30px 15px 60px;
-  text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-color: #FFE0B2;
+	list-style: outside none none;
+	padding: 30px 15px 60px;
+	text-align: center;
 }
 
 #id--restaurants-list li {
-  background-color: #fff;
-  border: 2px solid #ccc;
-  margin: 15px;
-  min-height: 380px;
-  padding: 0 30px 25px;
-  text-align: left;
-  width: 270px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	margin: 25px 40px 40px 40px;
+	min-height: 380px;
+	/*padding: 0 30px 25px;*/
+	padding: 2% 7% 2%;
+	max-width: 100%;
+	border-radius: 30px;
 }
 
 #id--restaurants-list .restaurant-img {
   background-color: #ccc;
-  display: block;
-  margin: 0;
+  margin: 5% 2% 2% 2%;
   max-width: 100%;
   min-height: 248px;
-  min-width: 100%;
+  border-radius: 30px;
 }
 
 #id--restaurants-list li h1 {
