@@ -181,7 +181,7 @@ nav h1 a {
 	margin: 0;
 }
 
-#id--restaurants-list li a {
+#id--restaurants-list li button {
 	background-color: orange;
 	border-bottom: 3px solid #eee;
 	color: #fff;
@@ -189,6 +189,7 @@ nav h1 a {
 	padding: 8px 30px 10px;
 	text-align: center;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 
 /* ====================== Restaurant Details ====================== */
