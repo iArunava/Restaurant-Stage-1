@@ -147,24 +147,34 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  * Create review HTML and add it to the webpage.
  */
 createReviewHTML = (review) => {
-  const li = document.createElement('li');
-  const name = document.createElement('p');
-  name.innerHTML = review.name;
-  li.appendChild(name);
+    const li = document.createElement('li');
+    const name = document.createElement('p');
+    name.innerHTML = review.name;
+    li.appendChild(name);
 
-  const date = document.createElement('small');
-  date.innerHTML = review.date;
-  li.appendChild(date);
+    const rating = document.createElement('small');
+    rating.className = 'rating-rating'
+    rating.innerHTML = `Rating:
+        <span class='rating-stars'>
+        ${Array(review.rating).join('0').split('0').map((item, i) =>
+            `<span>&#127858;</span>`
+        ).join(' ')}
+        </span>`;
+    li.appendChild(rating);
 
-  const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
-  li.appendChild(rating);
+    const date = document.createElement('small');
+    date.innerHTML = review.date;
+    li.appendChild(date);
 
-  const comments = document.createElement('p');
-  comments.innerHTML = review.comments;
-  li.appendChild(comments);
+    const hr = document.createElement('hr');
+    hr.className = 'hr--seperator';
+    li.appendChild(hr);
 
-  return li;
+    const comments = document.createElement('p');
+    comments.innerHTML = review.comments;
+    li.appendChild(comments);
+
+    return li;
 }
 
 /**
