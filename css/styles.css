@@ -19,6 +19,10 @@ a {
 	text-decoration: none;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 .hr--seperator {
 	color: #fcfcfc33;
 	max-width: 95%;
@@ -27,7 +31,6 @@ a {
 /* ----------- */
 
 ul, li {
-	font-size: 10pt;
 	color: #333;
 	margin: 0px;
 }
@@ -81,17 +84,17 @@ nav h1 a {
 }
 
 #breadcrumb {
-    padding: 10px 40px 16px;
+    padding: 110px 40px 16px;
     list-style: none;
-    background-color: #eee;
+    background-color: #f3f3f3;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
 }
 
 /* Display list items side by side */
 #breadcrumb li {
     display: inline;
+	text-shadow: 12px 12px 18px #777;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
@@ -99,18 +102,18 @@ nav h1 a {
     padding: 8px;
     color: black;
     content: "/\00a0";
+	text-shadow: 12px 12px 18px #777;
 }
 
 /* Add a color to all links inside the list */
 #breadcrumb li a {
-    color: #0275d8;
+    color: #f18200;
     text-decoration: none;
 }
 
 /* Add a color on mouse-over */
 #breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
+    color: #EF6C00;
 }
 
 /* ====================== Map ====================== */
@@ -218,6 +221,7 @@ nav h1 a {
 #id--restaurant-maincontent {
 	background-color: #f3f3f3;
 	min-height: 100%;
+	padding-top: 30px;
 }
 
 .inside header {
@@ -227,11 +231,10 @@ nav h1 a {
 
 .inside #map-container {
 	background: blue none repeat scroll 0 0;
-	order: 1;
-	height: 87%;
+	height: 90%;
 	position: fixed;
 	right: 0;
-	top: 80px;
+	top: 75px;
 	width: 50%;
 }
 
