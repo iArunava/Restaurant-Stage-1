@@ -149,11 +149,12 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 createReviewHTML = (review) => {
     const li = document.createElement('li');
     const name = document.createElement('p');
+    name.className = 'reviewer-name';
     name.innerHTML = review.name;
     li.appendChild(name);
 
     const rating = document.createElement('small');
-    rating.className = 'rating-rating'
+    rating.className = 'rating-rating';
     rating.innerHTML = `Rating:
         <span class='rating-stars'>
         ${Array(review.rating).join('0').split('0').map((item, i) =>
