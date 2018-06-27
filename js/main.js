@@ -159,14 +159,14 @@ createRestaurantHTML = (restaurant) => {
     li.append(name);
 
     const neighborhood = document.createElement('p');
-    name.setAttribute('tabindex', 0);
-    name.setAttribute('aria-label', restaurant.neighborhood);
+    neighborhood.setAttribute('tabindex', 0);
+    neighborhood.setAttribute('aria-label', restaurant.neighborhood);
     neighborhood.innerHTML = restaurant.neighborhood;
     li.append(neighborhood);
 
     const address = document.createElement('p');
-    name.setAttribute('tabindex', 0);
-    name.setAttribute('aria-label', restaurant.address);
+    address.setAttribute('tabindex', 0);
+    address.setAttribute('aria-label', restaurant.address);
     address.innerHTML = restaurant.address;
     li.append(address);
 

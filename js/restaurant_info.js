@@ -70,8 +70,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     name.innerHTML = restaurant.name;
 
     const address = document.getElementById('restaurant-address');
-    name.setAttribute('tabindex', 0);
-    name.setAttribute('aria-describedby',
+    address.setAttribute('tabindex', 0);
+    address.setAttribute('aria-describedby',
                     'Address of ' + restaurant.name + ' is ' + restaurant.address);
     address.innerHTML = restaurant.address;
 
@@ -81,8 +81,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
-    name.setAttribute('tabindex', 0);
-    name.setAttribute('aria-describedby',
+    cuisine.setAttribute('tabindex', 0);
+    cuisine.setAttribute('aria-describedby',
                     'Cuisine of ' + restaurant.name + ' is ' + restaurant.address);
     cuisine.innerHTML = restaurant.cuisine_type;
 
