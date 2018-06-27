@@ -18,7 +18,6 @@ class DBHelper {
     } else {
         location += '/';
     }
-    alert(location);
     return `${location}data/restaurants.json`;
   }
 
