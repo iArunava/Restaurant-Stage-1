@@ -148,23 +148,31 @@ createRestaurantHTML = (restaurant) => {
 
     const image = document.createElement('img');
     image.className = 'restaurant-img';
+    image.alt = restaurant.name;
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
     li.append(image);
 
     const name = document.createElement('h1');
+    name.setAttribute('tabindex', 0);
+    name.setAttribute('aria-label', restaurant.name);
     name.innerHTML = restaurant.name;
     li.append(name);
 
     const neighborhood = document.createElement('p');
+    name.setAttribute('tabindex', 0);
+    name.setAttribute('aria-label', restaurant.neighborhood);
     neighborhood.innerHTML = restaurant.neighborhood;
     li.append(neighborhood);
 
     const address = document.createElement('p');
+    name.setAttribute('tabindex', 0);
+    name.setAttribute('aria-label', restaurant.address);
     address.innerHTML = restaurant.address;
     li.append(address);
 
     const more_btn = document.createElement('button');
     more_btn.innerHTML = 'View Details'
+    more_btn.setAttribute('aria-label','View Details of ' + restaurant.name);
     more_btn.onclick = () => {
         window.location = DBHelper.urlForRestaurant(restaurant);
     }
