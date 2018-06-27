@@ -11,7 +11,15 @@ class DBHelper {
     const port = 3000 // Change this to your server port
 
     // Adding condition to return the appropriate location of json file
-    return `${window.location.href}/data/restaurants.json`;
+    let location = window.location.protocol + '//';
+    location += window.location.host;
+    if (window.location.pathname[window.location.pathname.length-1] == '/') {
+        location += window.location.pathname;
+    } else {
+        location += '/';
+    }
+    alert(location);
+    return `${location}data/restaurants.json`;
   }
 
   /**
