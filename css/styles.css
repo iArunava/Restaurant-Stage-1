@@ -18,7 +18,7 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+a:hover, a:visited {
 	text-decoration: none;
 }
 
@@ -54,7 +54,7 @@ a img{
 	justify-content: center;
 	align-items: center;
 	background-color: #FFB74D;
-	color: #aaa;
+	color: #5a5353;
 	font-size: 8pt;
 	letter-spacing: 1px;
 	padding: 25px;
@@ -520,6 +520,17 @@ nav h1 a {
 
 	#id--restaurants-list li button {
 		padding: 6px 15px 6px;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	#id--restaurants-list li {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	#footer {
+		flex-direction: column;
 	}
 }
 
