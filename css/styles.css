@@ -48,13 +48,21 @@ a img{
 }
 
 #footer {
-	background-color: #444;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: #FFB74D;
 	color: #aaa;
 	font-size: 8pt;
 	letter-spacing: 1px;
 	padding: 25px;
-	text-align: center;
 	text-transform: uppercase;
+}
+
+#footer p, #footer a {
+	font-size: 1em;
 }
 
 /* ====================== Navigation ====================== */
