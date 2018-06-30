@@ -6,7 +6,18 @@ var newMap;
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
+  setServiceWorker();
 });
+
+function setServiceWorker() {
+    if (!navigator.serviceWorker) return;
+    navigator.serviceWorker.register('/sw.js').then(() => {
+        console.log('SRegistered!');
+    }).catch((error) => {
+        console.log('Registration failed!');
+        console.log(error);
+    });
+}
 
 /**
  * Initialize leaflet map
@@ -64,12 +75,6 @@ fetchRestaurantFromURL = (callback) => {
  * Create restaurant HTML and add it to the webpage
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
-    let location = window.location.protocol + '//';
-    location += window.location.host;
-    if (window.location.pathname[window.location.pathname.length-1] == '/') {
-        location += window.location.pathname;
-    }
-
     const name = document.getElementById('restaurant-name');
     name.setAttribute('tabindex', 0);
     name.setAttribute('aria-label', restaurant.name);
@@ -84,7 +89,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     const image = document.getElementById('restaurant-img');
     image.className = 'restaurant-img';
     image.alt = restaurant.name;
-    image.src = location + DBHelper.imageUrlForRestaurant(restaurant);
+    image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
     cuisine.setAttribute('tabindex', 0);

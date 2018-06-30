@@ -16,7 +16,8 @@ class DBHelper {
     if (window.location.pathname[window.location.pathname.length-1] == '/') {
         location += window.location.pathname;
     } else {
-        location += '/';
+        /*location += '/'; */ // TODO: Replace by regex
+        location += '/'; // Little hack
     }
     return `${location}data/restaurants.json`;
   }
