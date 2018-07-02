@@ -11,19 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     initMap(); // added
     fetchNeighborhoods();
     fetchCuisines();
-    setServiceWorker();
 });
-
-
-function setServiceWorker() {
-    if (!navigator.serviceWorker) return;
-    navigator.serviceWorker.register('/sw.js').then(() => {
-        console.log('SRegistered!');
-    }).catch((error) => {
-        console.log('Registration failed!');
-        console.log(error);
-    });
-}
 
 /**
  * Fetch all neighborhoods and set their HTML.
@@ -90,7 +78,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={mapboxToken}', {
-    mapboxToken: '',
+    mapboxToken: 'pk.eyJ1IjoiaWFydW5hdmEiLCJhIjoiY2ppbTJ4bGRiMmNqYzNxbjdpZDRmdmM1aCJ9.-7-85UACSUtnnMT8T8UTZA',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -166,11 +154,11 @@ createRestaurantHTML = (restaurant) => {
 
     const image = document.createElement('img');
     image.className = 'restaurant-img';
-    image.alt = restaurant.name;
+    image.alt = 'An image of ' + restaurant.name;
     image.src = location + DBHelper.imageUrlForRestaurant(restaurant);
     li.append(image);
 
-    const name = document.createElement('h1');
+    const name = document.createElement('h2');
     name.setAttribute('tabindex', 0);
     name.setAttribute('aria-label', restaurant.name);
     name.innerHTML = restaurant.name;

@@ -17,6 +17,7 @@ self.addEventListener('install', (event) => {
                 'js/main.js',
                 'js/dbhelper.js',
                 'js/restaurant_info.js',
+                'js/setServiceWorker.js',
                 'css/styles.css',
                 'data/restaurants.json',
                 'img/1.jpg',
@@ -35,25 +36,10 @@ self.addEventListener('install', (event) => {
     );
 });
 
-/*
-self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.delete('restaurant-cache-v1')
-    );
-});
-*/
-
 self.addEventListener('fetch', (event) => {
     let reg = new RegExp('(.*)?=(\\d*)');
     let request = event.request;
     let url = request.url;
-
-    /*
-    if (url.match(reg)[2] !== undefined) {
-        request = new Request(url.match(reg)[1]);
-        console.log(request);
-    }
-    */
 
     event.respondWith(
         caches.match(request).then((response) => {

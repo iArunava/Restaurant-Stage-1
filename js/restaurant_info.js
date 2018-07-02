@@ -1,23 +1,12 @@
 let restaurant;
-var newMap;
+let newMap;
 
 /**
  * Initialize map as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
-  setServiceWorker();
 });
-
-function setServiceWorker() {
-    if (!navigator.serviceWorker) return;
-    navigator.serviceWorker.register('/sw.js').then(() => {
-        console.log('SRegistered!');
-    }).catch((error) => {
-        console.log('Registration failed!');
-        console.log(error);
-    });
-}
 
 /**
  * Initialize leaflet map
@@ -33,16 +22,16 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<your MAPBOX API KEY HERE>',
+        mapboxToken: 'pk.eyJ1IjoiaWFydW5hdmEiLCJhIjoiY2ppbTJ4bGRiMmNqYzNxbjdpZDRmdmM1aCJ9.-7-85UACSUtnnMT8T8UTZA',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
           'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox.streets'
-      }).addTo(newMap);
+    }).addTo(self.newMap);
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
-    }
+  }
   });
 }
 
@@ -66,7 +55,7 @@ fetchRestaurantFromURL = (callback) => {
         return;
       }
       fillRestaurantHTML();
-      callback(null, restaurant)
+      callback(null, self.restaurant)
     });
   }
 }
@@ -75,6 +64,10 @@ fetchRestaurantFromURL = (callback) => {
  * Create restaurant HTML and add it to the webpage
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
+    document.getElementById('map')
+            .setAttribute('aria-describedby',
+                          'Map of the restaurant ' + restaurant.name);
+
     const name = document.getElementById('restaurant-name');
     name.setAttribute('tabindex', 0);
     name.setAttribute('aria-label', restaurant.name);
@@ -88,7 +81,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
     const image = document.getElementById('restaurant-img');
     image.className = 'restaurant-img';
-    image.alt = restaurant.name;
+    image.alt = 'An image of ' + restaurant.name;
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
